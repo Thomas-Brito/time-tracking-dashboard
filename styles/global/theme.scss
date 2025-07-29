@@ -1,0 +1,66 @@
+//! Colors
+
+//* Primary
+
+$Purple-600: hsl(246, 80%, 60%);
+
+$Orange-300_work: hsl(15, 100%, 70%);
+$Blue-300_play: hsl(195, 74%, 62%);
+$Pink-400_study: hsl(348, 100%, 68%);
+$Green-400_exercise: hsl(145, 58%, 55%);
+$Purple-700_social: hsl(264, 64%, 52%);
+$Yellow-300_self-care: hsl(43, 84%, 65%);
+
+//* Neutral
+
+$Navy-950: hsl(226, 43%, 10%);
+$Navy-900: hsl(235, 46%, 20%);
+$Purple-500: hsl(235, 45%, 61%);
+$Navy-200: hsl(235, 35%, 71%);
+$White: hsl(0, 100%, 100%);
+$Purple-Hover: hsl(236, 41%, 34%);
+
+//! Typography
+
+$Rubik: 'Rubik', sans-serif;
+
+@mixin type-card-bigger {
+  font-family: $Rubik;
+  font-weight: 300;
+  font-size: clamp(1.5rem, calc(1.227rem + 1.364vw), 2.25rem); /* min: 24px, max: 36px */
+  line-height: 1.5;
+}
+
+@mixin type-card-intermedium {
+  font-family: $Rubik;
+  font-weight: 300;
+  font-size: clamp(1.125rem, calc(1.08rem + 0.227vw), 1.25rem); /* min: 18px, max: 20px */
+  line-height: 1.5;
+}
+
+@mixin type-card-smallest {
+  font-family: $Rubik;
+  font-weight: 300;
+  font-size: clamp(1rem, calc(0.955rem + 0.227vw), 1.125rem); /* min: 16px, max: 18px */
+  line-height: 1.5;
+}
+
+//! CSS Variables
+
+:root {
+  --background-color-page: #{$Navy-950};
+  --background-color-card: #{$Navy-900};
+
+  --background-color-card-person: #{$Purple-600};
+  --background-color-card-work: #{$Orange-300_work};
+  --background-color-card-play: #{$Blue-300_play};
+  --background-color-card-study: #{$Pink-400_study};
+  --background-color-card-exercise: #{$Green-400_exercise};
+  --background-color-card-social: #{$Purple-700_social};
+  --background-color-card-self-care: #{$Yellow-300_self-care};
+  --background-color-card-hover: #{$Purple-Hover};
+
+  --font-color-card-person: #{$Purple-500};
+  --font-color-cards-activities: #{$Navy-200};
+  --font-color-cards: #{$White};
+}

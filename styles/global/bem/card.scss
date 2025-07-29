@@ -1,0 +1,235 @@
+@use '../layout.scss' as layout;
+@use '../theme.scss' as theme;
+
+.default {
+  background-color: var(--background-color-page);
+  color: var(--font-color-cards);
+}
+
+.card-container {
+  @include layout.grid-container;
+  gap: clamp(0.5rem, 10%, 1rem);
+  grid-template-areas:
+    'person work play study'
+    'person exercise social self-care';
+  width: clamp(20rem, 75%, 75rem);
+}
+
+.card-person, .card-work, .card-play, .card-study, .card-exercise, .card-social, .card-self-care {
+  background-color: var(--background-color-card);
+  border-radius: 1rem;
+  &__values-container {
+    border-radius: 1rem;
+    padding: clamp(1rem, 15%, 2rem);
+  }
+  &__title-container {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  &__dots {
+    height: 0.3rem;
+    &:hover {
+      cursor: pointer;
+      color: var(--font-color-cards);
+    }
+  }
+}
+
+.card-work, .card-play, .card-study, .card-exercise, .card-social, .card-self-care {
+  &:hover {
+    background-color: var(--background-color-card-hover);
+    cursor: pointer;
+  }
+  &__image-container {
+    align-content: flex-end;
+    border-radius: 1rem 1rem 0 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    max-height: 3.125rem;
+    overflow: hidden;
+  }
+  &__image {
+    height: 100%;
+  }
+  &__title {
+    @include theme.type-card-intermedium;
+  }
+  &__current-value {
+    @include theme.type-card-bigger;
+  }
+  &__previous-value {
+    @include theme.type-card-smallest;
+    color: var(--font-color-cards-activities);
+  }
+
+  &__daily-container {
+    display: none;
+    &--active {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  &__weekly-container {
+    display: none;
+    &--active {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  &__monthly-container {
+    display: none;
+    &--active {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
+
+.card-person {
+  grid-area: person;
+
+  &__top-container {
+    background-color: var(--background-color-card-person);
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: max(2rem, 40%);
+  }
+
+  &__top-container, &__options-container {
+    padding: clamp(1rem, 15%, 2rem);
+  }
+
+  &__image {
+    border: solid var(--font-color-cards) 0.125rem;
+    border-radius: 50%;
+    max-width: 30%;
+  }
+
+  &__legend {
+    @include theme.type-card-intermedium;
+    color: var(--font-color-cards-activities);
+  }
+
+  &__name {
+    @include theme.type-card-bigger;
+    margin: 0;
+  }
+
+  &__options-container {
+    display: flex;
+    flex-direction: column;
+    gap: max(2rem, 25%);
+  }
+
+  &__button {
+    opacity: 0;
+  }
+
+  &__item {
+    @include theme.type-card-intermedium;
+    color: var(--font-color-cards-activities);
+    font-weight: 300;
+
+    &--selected {
+      color: var(--font-color-cards);
+      font-weight: 500;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.card-work {
+  grid-area: work;
+
+  &__image-container {
+    background-color: var(--background-color-card-work);
+  }
+}
+
+
+.card-play {
+  grid-area: play;
+
+  &__image-container {
+    background-color: var(--background-color-card-play);
+  }
+}
+
+
+.card-study {
+  grid-area: study;
+
+  &__image-container {
+    background-color: var(--background-color-card-study);
+  }
+}
+
+
+.card-exercise {
+  grid-area: exercise;
+
+  &__image-container {
+    background-color: var(--background-color-card-exercise);
+  }
+}
+
+
+.card-social {
+  grid-area: social;
+
+  &__image-container {
+    background-color: var(--background-color-card-social);
+  }
+}
+
+
+.card-self-care {
+  grid-area: self-care;
+
+  &__image-container {
+    background-color: var(--background-color-card-self-care);
+  }
+}
+
+@media only screen and (max-width: 64rem){
+  
+  .card-container {
+    grid-template-areas:
+      'person person person'
+      'work study exercise'
+      'play social self-care';
+  }
+}
+
+@media only screen and (max-width: 48rem){
+  
+  .card-container {
+    grid-template-areas:
+      'person person'
+      'work study'
+      'exercise play'
+      'social self-care';
+  }
+}
+
+@media only screen and (max-width: 35rem){
+  
+  .card-container {
+    grid-template-areas:
+      'person'
+      'work'
+      'study'
+      'exercise'
+      'play'
+      'social'
+      'self-care';
+  }
+}

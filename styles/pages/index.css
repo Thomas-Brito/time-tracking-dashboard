@@ -1,0 +1,237 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  min-height: 100%;
+  width: 100%;
+}
+
+:root {
+  --background-color-page: hsl(226, 43%, 10%);
+  --background-color-card: hsl(235, 46%, 20%);
+  --background-color-card-person: hsl(246, 80%, 60%);
+  --background-color-card-work: hsl(15, 100%, 70%);
+  --background-color-card-play: hsl(195, 74%, 62%);
+  --background-color-card-study: hsl(348, 100%, 68%);
+  --background-color-card-exercise: hsl(145, 58%, 55%);
+  --background-color-card-social: hsl(264, 64%, 52%);
+  --background-color-card-self-care: hsl(43, 84%, 65%);
+  --background-color-card-hover: hsl(236, 41%, 34%);
+  --font-color-card-person: hsl(235, 45%, 61%);
+  --font-color-cards-activities: hsl(235, 35%, 71%);
+  --font-color-cards: hsl(0, 100%, 100%);
+}
+
+.default {
+  background-color: var(--background-color-page);
+  color: var(--font-color-cards);
+}
+
+.card-container {
+  display: grid;
+  gap: clamp(0.5rem, 10%, 1rem);
+  grid-template-areas: "person work play study" "person exercise social self-care";
+  width: clamp(20rem, 75%, 75rem);
+}
+
+.card-person, .card-work, .card-play, .card-study, .card-exercise, .card-social, .card-self-care {
+  background-color: var(--background-color-card);
+  border-radius: 1rem;
+}
+.card-person__values-container, .card-work__values-container, .card-play__values-container, .card-study__values-container, .card-exercise__values-container, .card-social__values-container, .card-self-care__values-container {
+  border-radius: 1rem;
+  padding: clamp(1rem, 15%, 2rem);
+}
+.card-person__title-container, .card-work__title-container, .card-play__title-container, .card-study__title-container, .card-exercise__title-container, .card-social__title-container, .card-self-care__title-container {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.card-person__dots, .card-work__dots, .card-play__dots, .card-study__dots, .card-exercise__dots, .card-social__dots, .card-self-care__dots {
+  height: 0.3rem;
+}
+.card-person__dots:hover, .card-work__dots:hover, .card-play__dots:hover, .card-study__dots:hover, .card-exercise__dots:hover, .card-social__dots:hover, .card-self-care__dots:hover {
+  cursor: pointer;
+  color: var(--font-color-cards);
+}
+
+.card-work:hover, .card-play:hover, .card-study:hover, .card-exercise:hover, .card-social:hover, .card-self-care:hover {
+  background-color: var(--background-color-card-hover);
+  cursor: pointer;
+}
+.card-work__image-container, .card-play__image-container, .card-study__image-container, .card-exercise__image-container, .card-social__image-container, .card-self-care__image-container {
+  align-content: flex-end;
+  border-radius: 1rem 1rem 0 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  max-height: 3.125rem;
+  overflow: hidden;
+}
+.card-work__image, .card-play__image, .card-study__image, .card-exercise__image, .card-social__image, .card-self-care__image {
+  height: 100%;
+}
+.card-work__title, .card-play__title, .card-study__title, .card-exercise__title, .card-social__title, .card-self-care__title {
+  font-family: "Rubik", sans-serif;
+  font-weight: 300;
+  font-size: clamp(1.125rem, 1.08rem + 0.227vw, 1.25rem); /* min: 18px, max: 20px */
+  line-height: 1.5;
+}
+.card-work__current-value, .card-play__current-value, .card-study__current-value, .card-exercise__current-value, .card-social__current-value, .card-self-care__current-value {
+  font-family: "Rubik", sans-serif;
+  font-weight: 300;
+  font-size: clamp(1.5rem, 1.227rem + 1.364vw, 2.25rem); /* min: 24px, max: 36px */
+  line-height: 1.5;
+}
+.card-work__previous-value, .card-play__previous-value, .card-study__previous-value, .card-exercise__previous-value, .card-social__previous-value, .card-self-care__previous-value {
+  font-family: "Rubik", sans-serif;
+  font-weight: 300;
+  font-size: clamp(1rem, 0.955rem + 0.227vw, 1.125rem); /* min: 16px, max: 18px */
+  line-height: 1.5;
+  color: var(--font-color-cards-activities);
+}
+.card-work__daily-container, .card-play__daily-container, .card-study__daily-container, .card-exercise__daily-container, .card-social__daily-container, .card-self-care__daily-container {
+  display: none;
+}
+.card-work__daily-container--active, .card-play__daily-container--active, .card-study__daily-container--active, .card-exercise__daily-container--active, .card-social__daily-container--active, .card-self-care__daily-container--active {
+  display: flex;
+  flex-direction: column;
+}
+.card-work__weekly-container, .card-play__weekly-container, .card-study__weekly-container, .card-exercise__weekly-container, .card-social__weekly-container, .card-self-care__weekly-container {
+  display: none;
+}
+.card-work__weekly-container--active, .card-play__weekly-container--active, .card-study__weekly-container--active, .card-exercise__weekly-container--active, .card-social__weekly-container--active, .card-self-care__weekly-container--active {
+  display: flex;
+  flex-direction: column;
+}
+.card-work__monthly-container, .card-play__monthly-container, .card-study__monthly-container, .card-exercise__monthly-container, .card-social__monthly-container, .card-self-care__monthly-container {
+  display: none;
+}
+.card-work__monthly-container--active, .card-play__monthly-container--active, .card-study__monthly-container--active, .card-exercise__monthly-container--active, .card-social__monthly-container--active, .card-self-care__monthly-container--active {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-person {
+  grid-area: person;
+}
+.card-person__top-container {
+  background-color: var(--background-color-card-person);
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: max(2rem, 40%);
+}
+.card-person__top-container, .card-person__options-container {
+  padding: clamp(1rem, 15%, 2rem);
+}
+.card-person__image {
+  border: solid var(--font-color-cards) 0.125rem;
+  border-radius: 50%;
+  max-width: 30%;
+}
+.card-person__legend {
+  font-family: "Rubik", sans-serif;
+  font-weight: 300;
+  font-size: clamp(1.125rem, 1.08rem + 0.227vw, 1.25rem); /* min: 18px, max: 20px */
+  line-height: 1.5;
+  color: var(--font-color-cards-activities);
+}
+.card-person__name {
+  font-family: "Rubik", sans-serif;
+  font-weight: 300;
+  font-size: clamp(1.5rem, 1.227rem + 1.364vw, 2.25rem); /* min: 24px, max: 36px */
+  line-height: 1.5;
+  margin: 0;
+}
+.card-person__options-container {
+  display: flex;
+  flex-direction: column;
+  gap: max(2rem, 25%);
+}
+.card-person__button {
+  opacity: 0;
+}
+.card-person__item {
+  font-family: "Rubik", sans-serif;
+  font-weight: 300;
+  font-size: clamp(1.125rem, 1.08rem + 0.227vw, 1.25rem); /* min: 18px, max: 20px */
+  line-height: 1.5;
+  color: var(--font-color-cards-activities);
+  font-weight: 300;
+}
+.card-person__item--selected {
+  color: var(--font-color-cards);
+  font-weight: 500;
+}
+.card-person__item:hover {
+  cursor: pointer;
+}
+
+.card-work {
+  grid-area: work;
+}
+.card-work__image-container {
+  background-color: var(--background-color-card-work);
+}
+
+.card-play {
+  grid-area: play;
+}
+.card-play__image-container {
+  background-color: var(--background-color-card-play);
+}
+
+.card-study {
+  grid-area: study;
+}
+.card-study__image-container {
+  background-color: var(--background-color-card-study);
+}
+
+.card-exercise {
+  grid-area: exercise;
+}
+.card-exercise__image-container {
+  background-color: var(--background-color-card-exercise);
+}
+
+.card-social {
+  grid-area: social;
+}
+.card-social__image-container {
+  background-color: var(--background-color-card-social);
+}
+
+.card-self-care {
+  grid-area: self-care;
+}
+.card-self-care__image-container {
+  background-color: var(--background-color-card-self-care);
+}
+
+@media only screen and (max-width: 64rem) {
+  .card-container {
+    grid-template-areas: "person person person" "work study exercise" "play social self-care";
+  }
+}
+@media only screen and (max-width: 48rem) {
+  .card-container {
+    grid-template-areas: "person person" "work study" "exercise play" "social self-care";
+  }
+}
+@media only screen and (max-width: 35rem) {
+  .card-container {
+    grid-template-areas: "person" "work" "study" "exercise" "play" "social" "self-care";
+  }
+}
+
+/*# sourceMappingURL=index.css.map */
